@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashritha Satyasri Penke | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Reverted to only Poppins font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': {
+                            'DEFAULT': '#3B82F6', // Blue-600
+                            'dark': '#2563EB'   // Blue-700
+                        },
+                        'dark': {
+                            'bg': '#111827',     // Gray-900
+                            'card': '#1F2937',    // Gray-800
+                            'text': '#F9FAFB'    // Gray-50
+                        },
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                          '0%, 100%': { transform: 'scale(1)', boxShadow: '0 0 5px rgba(59, 130, 246, 0)' },
+                          '50%': { transform: 'scale(1.02)', boxShadow: '0 0 20px rgba(59, 130, 246, 0.5)' },
+                        }
+                    },
+                    animation: {
+                        pulseGlow: 'pulseGlow 2.5s infinite ease-in-out',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Applying the new white background */
+        body {
+            background-color: #f8fafc; /* A very light, clean gray (slate-50) */
+        }
+        /* Animated Background Canvas */
+        #particle-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* This makes it stay in the background */
+        }
+        /* On-Scroll Fade Animation */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* --- STYLISH TIMELINE --- */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        /* The stylish gradient line */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            bottom: 10px;
+            width: 4px;
+            background: linear-gradient(to bottom, #8B5CF6, #3B82F6, #10B981);
+            border-radius: 2px;
+        }
+        .timeline-item {
+            position: relative;
+        }
+        /* The circular markers on the timeline */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -48px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #fff;
+            border: 4px solid #3B82F6;
+            z-index: 1;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .timeline-item:hover::before {
+            background-color: #8B5CF6;
+            transform: scale(1.2);
+        }
+        /* Enhanced glow effect for cards on hover */
+        .card-glow:hover {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4), 0 0 30px rgba(139, 92, 246, 0.2);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <canvas id="particle-background"></canvas>
+
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Changed font back to default sans-serif -->
+            <a href="#" class="text-xl font-bold text-gray-800">Ashritha Satyasri Penke</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="text-gray-600 hover:text-primary transition">About</a>
+                <a href="#experience" class="text-gray-600 hover:text-primary transition">Experience</a>
+                <a href="#projects" class="text-gray-600 hover:text-primary transition">Projects</a>
+                <a href="#skills" class="text-gray-600 hover:text-primary transition">Skills</a>
+                <a href="#contact" class="bg-primary text-white px-5 py-2 rounded-md hover:bg-primary-dark transition-all duration-300 transform hover:scale-105">Contact Me</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6">
+
+        <section id="hero" class="text-center min-h-[80vh] flex flex-col justify-center items-center">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 mb-4">ASHRITHA SATYASRI PENKE</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">B.Tech. student in Computer Science (AI), passionate about creating intelligent solutions and full-stack web applications.</p>
+            <div class="flex gap-6 items-center">
+                <a href="#projects" class="bg-primary text-white px-6 py-3 rounded-md hover:bg-primary-dark transition-all duration-300 transform hover:scale-105 animate-pulseGlow">AI Intern</a>
+                <a href="#contact" class="group font-semibold text-primary hover:text-primary-dark transition-colors duration-300">
+                    Get In Touch
+                    <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+                </a>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 fade-in-section">
+            <div class="grid md:grid-cols-5 gap-16 items-start">
+                <div class="md:col-span-3">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6">About Me</h2>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        I am a dedicated Computer Science student specializing in Artificial Intelligence. My technical foundation is built on a strong understanding of Python, SQL, and core concepts like Machine Learning and DBMS. I am proficient with development tools like VS Code, Jupyter Notebook, and GitHub, and I have hands-on experience building practical applications.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Through projects, I've developed an AI-powered matching system using FastAPI, a machine learning visualizer with Streamlit and Scikit-learn, and a text summarizer leveraging the Hugging Face Transformers library. These experiences have allowed me to apply my skills to real-world challenges, and I am eager to contribute to innovative projects in the tech industry.
+                    </p>
+                </div>
+                <div class="md:col-span-2">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6">Education</h2>
+                    <div class="timeline">
+                        <div class="timeline-item pb-8">
+                            <h4 class="font-bold text-lg">B. Tech in Computer Science (AI)</h4>
+                            <p class="text-gray-600">Pragati Engineering College | CGPA: 8.9</p>
+                            <p class="text-sm text-gray-500">Sept 2022 - May 2026</p>
+                        </div>
+                        <div class="timeline-item pb-8">
+                            <h4 class="font-bold text-lg">Intermediate (MPC)</h4>
+                            <p class="text-gray-600">Narayana Junior College | CGPA: 9.5</p>
+                            <p class="text-sm text-gray-500">June 2020 - May 2022</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="font-bold text-lg">Secondary School</h4>
+                            <p class="text-gray-600">Apex high School | CGPA: 9.8</p>
+                            <p class="text-sm text-gray-500">June 2019 - Mar 2020</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-20 fade-in-section">
+            <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Work Experience</h2>
+            <div class="max-w-3xl mx-auto space-y-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:-translate-y-1 transition-all duration-300 card-glow">
+                    <h3 class="text-2xl font-bold text-gray-800">Al intern</h3>
+                    <div class="flex justify-between items-center mb-3">
+                        <p class="font-semibold text-primary">Turtil Company</p>
+                        <p class="text-sm text-gray-500">May 2025 - June 2025</p>
+                    </div>
+                    <p class="text-gray-600">Developed AI-powered system using Fast API and rule-based logic, achieving a 95% success rate in matching students with compatible study partners based on shared academic goals.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:-translate-y-1 transition-all duration-300 card-glow">
+                    <h3 class="text-2xl font-bold text-gray-800">Web Full Stack Developer</h3>
+                    <div class="flex justify-between items-center mb-3">
+                        <p class="font-semibold text-primary">Edu skills</p>
+                        <a href="https://drive.google.com/file/d/1oreof7l96KeI-wEEUeR8XsKtofVXiHFL/view" target="_blank" class="text-sm text-blue-500 hover:underline">View Certificate</a>
+                    </div>
+                    <p class="text-gray-600">Built 5+ responsive web apps during a 3-month Full Stack Developer internship.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:-translate-y-1 transition-all duration-300 card-glow">
+                    <h3 class="text-2xl font-bold text-gray-800">Data Engineering Virtual Internship</h3>
+                    <div class="flex justify-between items-center mb-3">
+                        <p class="font-semibold text-primary">AWS</p>
+                         <a href="https://drive.google.com/file/d/1p0cafjO8Jvon9QAIBCMdMHxRm_ldr3Af/view" target="_blank" class="text-sm text-blue-500 hover:underline">View Certificate</a>
+                    </div>
+                    <p class="text-gray-600">Fulfilled AWS Data Engineering Virtual Internship using S3, Glue, and Redshift for data processing.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-20 fade-in-section">
+            <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col card-glow">
+                    <h3 class="text-xl font-bold text-gray-800">STUDY BUDDY MATCHING WITH AI</h3>
+                    <p class="text-gray-600 mt-2 mb-4 flex-grow">Designed an Al-based system to match students with compatible study partners using FastAPI and rule-based logic, attaining 90% matching accuracy.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-blue-100 text-primary text-xs font-semibold px-2.5 py-0.5 rounded-full">Python</span>
+                        <span class="bg-blue-100 text-primary text-xs font-semibold px-2.5 py-0.5 rounded-full">FastAPI</span>
+                        <span class="bg-blue-100 text-primary text-xs font-semibold px-2.5 py-0.5 rounded-full">Docker</span>
+                    </div>
+                    <a href="https://github.com/ASHRITHAPENKE/StudyBuddyMatchingWithAI" target="_blank" class="font-bold text-primary hover:text-primary-dark self-start">View on GitHub <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col card-glow">
+                    <h3 class="text-xl font-bold text-gray-800">ML ALGORITHM VISUALIZER</h3>
+                    <p class="text-gray-600 mt-2 mb-4 flex-grow">Built an ML Algorithm Visualizer using Streamlit with model selection and real-time graphs. Achieved up to 92% accuracy across various tasks.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-blue-100 text-primary text-xs font-semibold px-2.5 py-0.5 rounded-full">Python</span>
+                        <span class="bg-blue-100 text-primary text-xs font-semibold px-2.5 py-0.5 rounded-full">Streamlit</span>
+                        <span class="bg-blue-100 text-primary text-xs font-semibold px-2.5 py-0.5 rounded-full">Scikit-learn</span>
+                    </div>
+                    <a href="https://github.com/ASHRITHAPENKE/ML_Visualizer" target="_blank" class="font-bold text-primary hover:text-primary-dark self-start">View on GitHub <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col card-glow">
+                    <h3 class="text-xl font-bold text-gray-800">TEXT SUMMARIZER</h3>
+                    <p class="text-gray-600 mt-2 mb-4 flex-grow">Implemented a Streamlit-based text summarizer using Hugging Face BART model. Secured 85% efficiency with custom length and topic-based samples.</p>
+                     <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-blue-100 text-primary text-xs font-semibold px-2.5 py-0.5 rounded-full">Python</span>
+                        <span class="bg-blue-100 text-primary text-xs font-semibold px-2.5 py-0.5 rounded-full">Streamlit</span>
+                        <span class="bg-blue-100 text-primary text-xs font-semibold px-2.5 py-0.5 rounded-full">Transformers</span>
+                    </div>
+                    <a href="https://github.com/ASHRITHAPENKE/Text-Summarizer" target="_blank" class="font-bold text-primary hover:text-primary-dark self-start">View on GitHub <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+         <section id="skills" class="py-20 fade-in-section">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6">Skills</h2>
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-gray-700 mb-3">Programming Languages</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 px-3 py-1 rounded-md hover:bg-primary hover:text-white transition shadow-sm card-glow">Python</span>
+                            <span class="bg-gray-100 px-3 py-1 rounded-md hover:bg-primary hover:text-white transition shadow-sm card-glow">SQL</span>
+                            <span class="bg-gray-100 px-3 py-1 rounded-md hover:bg-primary hover:text-white transition shadow-sm card-glow">C</span>
+                            <span class="bg-gray-100 px-3 py-1 rounded-md hover:bg-primary hover:text-white transition shadow-sm card-glow">Java</span>
+                        </div>
+                    </div>
+                     <div class="mb-6">
+                        <h4 class="font-semibold text-gray-700 mb-3">Technical Skills</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 px-3 py-1 rounded-md hover:bg-primary hover:text-white transition shadow-sm card-glow">DBMS</span>
+                            <span class="bg-gray-100 px-3 py-1 rounded-md hover:bg-primary hover:text-white transition shadow-sm card-glow">Machine Learning</span>
+                            <span class="bg-gray-100 px-3 py-1 rounded-md hover:bg-primary hover:text-white transition shadow-sm card-glow">Artificial Intelligence</span>
+                            <span class="bg-gray-100 px-3 py-1 rounded-md hover:bg-primary hover:text-white transition shadow-sm card-glow">FastAPI</span>
+                             <span class="bg-gray-100 px-3 py-1 rounded-md hover:bg-primary hover:text-white transition shadow-sm card-glow">Operating Systems</span>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-gray-700 mb-3">Frameworks & Tools</h4>
+                        <div class="flex flex-wrap gap-2">
+                             <span class="bg-gray-100 px-3 py-1 rounded-md hover:bg-primary hover:text-white transition shadow-sm card-glow">VS Code</span>
+                             <span class="bg-gray-100 px-3 py-1 rounded-md hover:bg-primary hover:text-white transition shadow-sm card-glow">Jupyter Notebook</span>
+                             <span class="bg-gray-100 px-3 py-1 rounded-md hover:bg-primary hover:text-white transition shadow-sm card-glow">Google Cloud</span>
+                             <span class="bg-gray-100 px-3 py-1 rounded-md hover:bg-primary hover:text-white transition shadow-sm card-glow">GitHub</span>
+                             <span class="bg-gray-100 px-3 py-1 rounded-md hover:bg-primary hover:text-white transition shadow-sm card-glow">Docker</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6">Certifications</h2>
+                    <ul class="space-y-4">
+                        <li class="bg-white p-4 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl card-glow"><a href="https://drive.google.com/file/d/1YU1-XhhX4UGNHMPJC--IzTdYhBv1G2YQ/view" target="_blank" class="flex justify-between items-center w-full hover:text-primary">Salesforce Ai Associate<i class="fas fa-external-link-alt text-xs"></i></a></li>
+                        <li class="bg-white p-4 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl card-glow"><a href="https://drive.google.com/file/d/1iDgCbu0hOAw6NpHXO2PhOlK932nVIJDG/view" target="_blank" class="flex justify-between items-center w-full hover:text-primary">ServiceNow Certified Application Developer<i class="fas fa-external-link-alt text-xs"></i></a></li>
+                        <li class="bg-white p-4 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl card-glow"><a href="https://drive.google.com/file/d/1kNZwNL2byGisEVKqez8w1czfkrHrVBaQ/view" target="_blank" class="flex justify-between items-center w-full hover:text-primary">ServiceNow Certified System Administrator<i class="fas fa-external-link-alt text-xs"></i></a></li>
+                        <li class="bg-white p-4 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl card-glow"><a href="https://drive.google.com/file/d/1J2tcuQy7t8rSDxfslD1GWuOdGv-aLvH3/view" target="_blank" class="flex justify-between items-center w-full hover:text-primary">NPTEL Python For Data Science<i class="fas fa-external-link-alt text-xs"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 fade-in-section">
+             <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Achievements</h2>
+             <div class="max-w-4xl mx-auto">
+                 <ul class="space-y-3 list-inside">
+                     <li class="bg-white p-4 rounded-lg shadow-lg flex items-center gap-4 transition-all duration-300 hover:shadow-xl card-glow"><i class="fas fa-trophy text-yellow-500"></i> Merit Certificate in academic Semester 4,5</li>
+                     <li class="bg-white p-4 rounded-lg shadow-lg flex items-center gap-4 transition-all duration-300 hover:shadow-xl card-glow"><i class="fas fa-trophy text-yellow-500"></i> Elite in NPTEL Python for Data science</li>
+                     <li class="bg-white p-4 rounded-lg shadow-lg flex items-center gap-4 transition-all duration-300 hover:shadow-xl card-glow"><i class="fas fa-trophy text-yellow-500"></i> Participated in the AI Autonomous Hackathon</li>
+                     <li class="bg-white p-4 rounded-lg shadow-lg flex items-center gap-4 transition-all duration-300 hover:shadow-xl card-glow"><i class="fas fa-trophy text-yellow-500"></i> 100-day badge in Leetcode</li>
+                     <li class="bg-white p-4 rounded-lg shadow-lg flex items-center gap-4 transition-all duration-300 hover:shadow-xl card-glow"><i class="fas fa-trophy text-yellow-500"></i> Google Cloud Arcade Premium Plus Swags</li>
+                 </ul>
+             </div>
+        </section>
+
+        <section id="contact" class="py-20 fade-in-section">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4 text-left">Get in Touch</h2>
+                <p class="text-gray-600 mb-8 text-left">I'm actively looking for new opportunities and collaborations. My inbox is always open!</p>
+                <div class="bg-white p-8 rounded-lg shadow-lg grid md:grid-cols-2 gap-8 card-glow hover:-translate-y-1 transition-all duration-300">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Contact Information</h3>
+                         <div class="space-y-4">
+                            <p class="flex items-center"><i class="fas fa-phone text-primary w-6"></i> +91 9290000137</p>
+                            <p class="flex items-center"><i class="fas fa-envelope text-primary w-6"></i> ashrithapenke124@gmail.com</p>
+                        </div>
+                        <div class="mt-6">
+                            <h4 class="font-bold mb-2">Social Profiles</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://www.linkedin.com/in/ashritha-penke-385560259/" target="_blank" class="text-[#0077B5] hover:opacity-80 transition-opacity"><i class="fab fa-linkedin fa-2x"></i></a>
+                                <a href="https://github.com/ASHRITHAPENKE" target="_blank" class="text-[#333] hover:opacity-80 transition-opacity"><i class="fab fa-github fa-2x"></i></a>
+                                <a href="https://leetcode.com/u/Ashritha_Satya/" target="_blank" class="text-[#FFA116] hover:opacity-80 transition-opacity"><i class="fas fa-code fa-2x"></i></a>
+                                <a href="https://www.hackerrank.com/profile/22A31A43D3" target="_blank" class="text-[#2EC866] hover:opacity-80 transition-opacity"><i class="fab fa-hackerrank fa-2x"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Send a Message</h3>
+                        <a href="mailto:ashrithapenke124@gmail.com" class="w-full text-center bg-primary text-white px-6 py-3 rounded-md hover:bg-primary-dark transition-all duration-300 transform hover:scale-105 inline-block">Say Hello</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-dark-bg text-dark-text py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Ashritha Satyasri Penke. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // On-Scroll Fade-in Animation
+        const faders = document.querySelectorAll('.fade-in-section');
+        const faderObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        faders.forEach((section) => {
+            faderObserver.observe(section);
+        });
+
+        // Animated Particle Background
+        const canvas = document.getElementById('particle-background');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const options = {
+            particleColor: "rgba(150, 150, 150, 0.5)",
+            lineColor: "rgba(60, 130, 255, 0.2)",
+            particleAmount: 50,
+            defaultSpeed: 0.5,
+            lineRadius: 150
+        };
+
+        let particles = [];
+
+        function getParticleAmount() {
+            if (canvas.width < 800) {
+                return Math.floor(options.particleAmount / 2);
+            }
+            return options.particleAmount;
+        }
+
+        class Particle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.speed = options.defaultSpeed;
+                this.directionAngle = Math.floor(Math.random() * 360);
+                this.vector = {
+                    x: Math.cos(this.directionAngle) * this.speed,
+                    y: Math.sin(this.directionAngle) * this.speed
+                };
+            }
+            update() {
+                this.border();
+                this.x += this.vector.x;
+                this.y += this.vector.y;
+            }
+            border() {
+                if (this.x >= canvas.width || this.x <= 0) { this.vector.x *= -1; }
+                if (this.y >= canvas.height || this.y <= 0) { this.vector.y *= -1; }
+                if (this.x > canvas.width) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = canvas.height;
+                if (this.x < 0) this.x = 0;
+                if (this.y < 0) this.y = 0;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.fillStyle = options.particleColor;
+                ctx.fill();
+            }
+        }
+
+        function setupParticles() {
+             particles = [];
+             let amount = getParticleAmount();
+             for (let i = 0; i < amount; i++) {
+                particles.push(new Particle(Math.random() * canvas.width, Math.random() * canvas.height));
+            }
+            window.requestAnimationFrame(animateParticles);
+        }
+        
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let particle of particles) {
+                particle.update();
+                particle.draw();
+            }
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dist = Math.hypot(particles[i].x - particles[j].x, particles[i].y - particles[j].y);
+                    if (dist < options.lineRadius) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(60, 130, 255, ${1 - dist / options.lineRadius})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                        ctx.closePath();
+                    }
+                }
+            }
+            window.requestAnimationFrame(animateParticles);
+        }
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            setupParticles();
+        });
+
+        setupParticles();
+    </script>
+</body>
+</html>
